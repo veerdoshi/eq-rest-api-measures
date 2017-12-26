@@ -31,6 +31,15 @@ class Item(Resource):
     )
 
     @jwt_required()
+
+    def __init__(self, name, price, lat, lon, store_id):
+        self.name = name
+        self.price = price
+        self.lat = lat
+        self.lon = lon
+        self.store_id = store_id
+
+    
     def get(self, name):
         item = ItemModel.find_by_name(name)
         if item:
